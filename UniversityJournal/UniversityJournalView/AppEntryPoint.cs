@@ -23,6 +23,7 @@ namespace UniversityJournalView
             }
             UniversityJournalDbContext.SetConnectionString(connectionStirng);
             App a = new App();
+            a.Exit += (o, e) => UniversityJournalDbContext.GetDbContext().Dispose();
             a.StartupUri = new Uri("/Views/StoragesWindow.xaml", UriKind.Relative);
             a.Run();
         }
