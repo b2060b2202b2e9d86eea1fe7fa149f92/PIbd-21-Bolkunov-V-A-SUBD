@@ -9,13 +9,22 @@ namespace UniversityJournalDb
 {
     public partial class UniversityJournalDbContext : DbContext
     {
-        internal static string connectionString = null; //"Host=192.168.0.108;Database=university_journal_db;Username=postgres"
+        private static UniversityJournalDbContext singletone;
 
-        public UniversityJournalDbContext()
+        public static UniversityJournalDbContext GetDbContext()
+        {
+            if (singletone == null)
+                singletone = new UniversityJournalDbContext();
+            return singletone;
+        }
+
+        internal static string connectionString = null;
+
+        private UniversityJournalDbContext()
         {
         }
 
-        public UniversityJournalDbContext(DbContextOptions<UniversityJournalDbContext> options)
+        private UniversityJournalDbContext(DbContextOptions<UniversityJournalDbContext> options)
             : base(options)
         {
         }

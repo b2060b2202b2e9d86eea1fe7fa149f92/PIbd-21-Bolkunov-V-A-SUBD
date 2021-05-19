@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using UniversityJournalDb.Interfaces;
 
 namespace UniversityJournalDb.Storages
 {
-    public abstract class AbstractStorage<TModel, TCreate, TSearch> 
+    public abstract class AbstractStorage<TModel, TCreate, TSearch> : IStorageCRUD
         where TModel : class 
         where TCreate : class 
         where TSearch : class
     {
-        protected internal readonly DbContext dbContext;
-        public AbstractStorage(DbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
+        private DbContext dbContext { get => UniversityJournalDbContext.GetDbContext(); }
+
+        public AbstractStorage() { }
 
         public TModel Create(TCreate creationModel)
         {
@@ -49,5 +49,25 @@ namespace UniversityJournalDb.Storages
         protected abstract TModel creationModelToModel(TCreate model);
         protected abstract bool isBinded(TModel model, TSearch creationModel);
         protected abstract TModel updateModelData(TModel model, TCreate newData);
+
+        public object Create(object entityToCreate)
+        {
+            return Create((TCreate)entityToCreate);
+        }
+
+        public IEnumerable Read(object entityToFind)
+        {
+            return Read((TSearch)entityToFind);
+        }
+
+        public object Update(object entityToUpdate, object newValues)
+        {
+            return Update((TModel)entityToUpdate, (TCreate)newValues);
+        }
+
+        public void Delete(object entityToDelete)
+        {
+            Delete((TModel)entityToDelete);
+        }
     }
 }

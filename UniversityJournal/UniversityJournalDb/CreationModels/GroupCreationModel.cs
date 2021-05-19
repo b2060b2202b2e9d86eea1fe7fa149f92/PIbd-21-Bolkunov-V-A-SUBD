@@ -5,7 +5,13 @@ namespace UniversityJournalDb.CreationModels
 {
     public class GroupCreationModel
     {
-        public string Name { get; set; }
-        public short CreationYear { get; set; }
+        public GroupCreationModel(string name, short creationYear)
+        {
+            Name = name;
+            CreationYear = creationYear;
+        }
+
+        public readonly string Name;
+        public readonly short CreationYear;
     }
 }

@@ -6,7 +6,7 @@ namespace UniversityJournalDb.Storages
 {
     public class SubjectStorage : AbstractStorage<SubjectModel, SubjectCreationModel, SubjectSearchModel>
     {
-        public SubjectStorage(UniversityJournalDbContext context) : base(context) { }
+        public SubjectStorage() : base() { }
 
         protected override SubjectModel creationModelToModel(SubjectCreationModel model)
         {
@@ -25,6 +25,11 @@ namespace UniversityJournalDb.Storages
             model.Name = newData.Name;
             model.TeacherId = newData.TeacherId;
             return model;
+        }
+
+        public override string ToString()
+        {
+            return "Subject Storage";
         }
     }
 }

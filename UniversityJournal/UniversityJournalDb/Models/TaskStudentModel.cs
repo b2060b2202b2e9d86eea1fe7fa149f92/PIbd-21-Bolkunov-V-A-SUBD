@@ -19,5 +19,10 @@ namespace UniversityJournalDb.Models
 
         public virtual StudentModel Student { get; protected internal set; }
         public virtual TaskModel Task { get; protected internal set; }
+
+        public override string ToString()
+        {
+            return "Task_Student";
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace UniversityJournalDb.Storages
 {
     public class StudentStorage : AbstractStorage<StudentModel, StudentCreationModel, StudentSearchModel>
     {
-        public StudentStorage(UniversityJournalDbContext context) : base(context) { }
+        public StudentStorage() : base() { }
 
         protected override StudentModel creationModelToModel(StudentCreationModel model)
         {
@@ -27,6 +27,11 @@ namespace UniversityJournalDb.Storages
             model.Birthday = newData.Birthday;
             model.GroupId = newData.GroupId;
             return model;
+        }
+
+        public override string ToString()
+        {
+            return "Student Storage";
         }
     }
 }

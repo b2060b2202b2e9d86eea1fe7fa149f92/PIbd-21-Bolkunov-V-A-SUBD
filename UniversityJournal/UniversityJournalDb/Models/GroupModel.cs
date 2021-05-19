@@ -17,5 +17,10 @@ namespace UniversityJournalDb.Models
         public short CreationYear { get; protected internal set; }
 
         public virtual ICollection<StudentModel> Students { get; protected internal set; }
+
+        public override string ToString()
+        {
+            return "Group";
+        }
     }
 }

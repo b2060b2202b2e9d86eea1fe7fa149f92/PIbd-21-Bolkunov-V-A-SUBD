@@ -6,7 +6,7 @@ namespace UniversityJournalDb.Storages
 {
     public class TaskStorage : AbstractStorage<TaskModel, TaskCreationModel, TaskSearchModel>
     {
-        public TaskStorage(UniversityJournalDbContext context) : base(context) { }
+        public TaskStorage() : base() { }
 
         protected override TaskModel creationModelToModel(TaskCreationModel model)
         {
@@ -25,6 +25,11 @@ namespace UniversityJournalDb.Storages
             model.Name = newData.Name;
             model.SubjectId = newData.SubjectId;
             return model;
+        }
+
+        public override string ToString()
+        {
+            return "Task Storage";
         }
     }
 }

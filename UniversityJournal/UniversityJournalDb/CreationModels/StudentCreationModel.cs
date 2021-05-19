@@ -5,8 +5,15 @@ namespace UniversityJournalDb.CreationModels
 {
     public class StudentCreationModel
     {
-        public string Name { get; set; }
-        public DateTime Birthday { get; set; }
-        public int GroupId { get; set; }
+        public StudentCreationModel(string name, DateTime birthday, int groupID)
+        {
+            Name = name;
+            Birthday = birthday;
+            GroupId = groupID;
+        }
+
+        public readonly string Name;
+        public readonly DateTime Birthday;
+        public readonly int GroupId;
     }
 }

@@ -5,7 +5,13 @@ namespace UniversityJournalDb.CreationModels
 {
     public class SubjectCreationModel
     {
-        public string Name { get; set; }
-        public int TeacherId { get; set; }
+        public SubjectCreationModel(string name, int teacherID)
+        {
+            Name = name;
+            TeacherId = teacherID;
+        }
+
+        public readonly string Name;
+        public readonly int TeacherId;
     }
 }

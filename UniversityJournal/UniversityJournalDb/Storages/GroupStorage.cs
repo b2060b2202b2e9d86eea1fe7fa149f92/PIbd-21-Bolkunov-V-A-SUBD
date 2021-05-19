@@ -6,7 +6,7 @@ namespace UniversityJournalDb.Storages
 {
     public class GroupStorage : AbstractStorage<GroupModel, GroupCreationModel, GroupSearchModel>
     {
-        public GroupStorage(UniversityJournalDbContext context) : base(context) { }
+        public GroupStorage() : base() { }
 
         protected override GroupModel creationModelToModel(GroupCreationModel model)
         {
@@ -25,6 +25,11 @@ namespace UniversityJournalDb.Storages
             model.Name = newData.Name;
             model.CreationYear = newData.CreationYear;
             return model;
+        }
+
+        public override string ToString()
+        {
+            return "Group Storage";
         }
     }
 }

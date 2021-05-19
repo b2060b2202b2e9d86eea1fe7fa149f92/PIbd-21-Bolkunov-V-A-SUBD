@@ -9,25 +9,26 @@ namespace UniversityJournalDb.Storages
 {
     public class ViewStorage
     {
-        protected internal readonly UniversityJournalDbContext dbContext;
-        public ViewStorage(UniversityJournalDbContext dbContext)
+        public ViewStorage() { }
+
+        public List<AllTasksView> GetAllTasksView()//Lab-3, View-1
         {
-            this.dbContext = dbContext;
+            return UniversityJournalDbContext.GetDbContext().AllTasksViews.ToList();
         }
 
-        public ICollection<AllTasksView> GetAllTasksView()//Lab-3, View-1
+        public List<AllGradesView> GetAllGradesView()//Lab-3, View-2
         {
-            return dbContext.AllTasksViews.ToList();
+            return UniversityJournalDbContext.GetDbContext().AllGradesViews.ToList();
         }
 
-        public ICollection<AllGradesView> GetAllGradesView()//Lab-3, View-2
+        public List<AllGradesWithinMonth> GetAllGradesViewWithinMonth()//Lab-3, View-3
         {
-            return dbContext.AllGradesViews.ToList();
+            return UniversityJournalDbContext.GetDbContext().AllGradesWithinMonths.ToList();
         }
 
-        public ICollection<AllGradesWithinMonth> GetAllGradesViewWithinMonth()//Lab-3, View-3
+        public override string ToString()
         {
-            return dbContext.AllGradesWithinMonths.ToList();
+            return "View Storage";
         }
     }
 }

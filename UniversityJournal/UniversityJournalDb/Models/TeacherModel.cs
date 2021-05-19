@@ -17,5 +17,10 @@ namespace UniversityJournalDb.Models
         public DateTime Birthday { get; protected internal set; }
 
         public virtual ICollection<SubjectModel> Subjects { get; protected internal set; }
+
+        public override string ToString()
+        {
+            return "Teacher";
+        }
     }
 }
