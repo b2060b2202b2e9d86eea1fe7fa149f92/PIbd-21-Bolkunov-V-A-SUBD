@@ -201,19 +201,19 @@ namespace UniversityJournalView.ViewModels
         {
             if (editString == null || String.IsNullOrEmpty(editString)) return null;
             string[] tokens = editString.Split(';');
-            switch (SelectedEntity)
+            switch (CurrentStorage)
             {
-                case GroupModel model:
+                case GroupStorage storage:
                     return new GroupCreationModel(tokens[0], short.Parse(tokens[1]));
-                case StudentModel model:
-                    return new StudentCreationModel(tokens[0], DateTime.Parse(tokens[1]), int.Parse(tokens[1]));
-                case SubjectModel model:
+                case StudentStorage storage:
+                    return new StudentCreationModel(tokens[0], DateTime.Parse(tokens[1]), int.Parse(tokens[2]));
+                case SubjectStorage storage:
                     return new SubjectCreationModel(tokens[0], int.Parse(tokens[1]));
-                case TaskModel model:
+                case TaskStorage storage:
                     return new TaskCreationModel(tokens[0], int.Parse(tokens[1]));
-                case TaskStudentModel model:
+                case TaskStudentStorage storage:
                     return new TaskStudentCreationModel(int.Parse(tokens[0]), int.Parse(tokens[1]), short.Parse(tokens[2]), DateTime.Parse(tokens[3]));
-                case TeacherModel model:
+                case TeacherStorage storage:
                     return new TeacherCreationModel(tokens[0], DateTime.Parse(tokens[1]));
                 default:
                     return null;

@@ -1,6 +1,8 @@
 ﻿using UniversityJournalDb.Models;
 using UniversityJournalDb.SearchModels;
 using UniversityJournalDb.CreationModels;
+using System.Linq;
+using System;
 
 namespace UniversityJournalDb.Storages
 {
@@ -25,6 +27,13 @@ namespace UniversityJournalDb.Storages
         {
             model.Name = newData.Name;
             model.Birthday = newData.Birthday;
+            using (var context = new UniversityJournalDbContext())
+            {
+                if(!context.Groups.Contains(g => g.id == newData.GroupId))
+                {
+                    throw new NotFoundException("Group with id="+newData.GroupId+" was not found");
+                }
+            }
             model.GroupId = newData.GroupId;
             return model;
         }
